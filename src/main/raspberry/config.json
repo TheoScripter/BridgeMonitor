@@ -1,0 +1,5 @@
+{
+    "api_endpoint": "http://localhost:8887/",
+    "allowed_addresses": ["F2:E3:F8:4E:0D:33"]
+}
+

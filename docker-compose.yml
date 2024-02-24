@@ -1,0 +1,48 @@
+version: '3'
+
+services:
+  keycloak:
+    image: quay.io/keycloak/keycloak:19.0.3
+    ports:
+      - "8080:8080"
+    environment:
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+    networks:
+      - quarkus-network
+    volumes:
+      - ./src/main/docker/export.json:/opt/keycloak/data/import/export.json
+    command: start-dev --import-realm
+
+  quarkus:
+    build:
+      context: .
+      dockerfile: ./src/main/docker/Dockerfile.jvm
+    environment:
+      - KEYCLOAK_URL=http://keycloak:8080
+    ports:
+      - "8887:8887"
+    depends_on:
+      - keycloak
+    networks:
+      - quarkus-network
+
+  vue:
+    build:
+      context: ./src/main/webapp/
+    environment:
+      - KEYCLOAK_URL=http://keycloak:8080
+      - QUARKUS_API_BASE=http://quarkus:8887
+    ports:
+      - "8081:80"
+    networks:
+      - quarkus-network
+    depends_on:
+      - quarkus
+
+networks:
+  quarkus-network:
+    driver: bridge
+
+    
+
