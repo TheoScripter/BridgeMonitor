@@ -1,15 +1,12 @@
 # BridgeMonitorMain
 
-Ce document contient les informations nécessaires pour installer et configurer Git, ainsi que les conventions de commit à suivre pour le projet. 😁
-
-
-[[_TOC_]]
-
+BridgeMonitorMain est un système de surveillance de ponts qui utilise des technologies modernes pour collecter et analyser des données en temps réel. 
+Ce document contient les informations nécessaires pour installer, configurer et utiliser BridgeMonitorMain.
 
 ## Installation
 Pour télecharger le projet sur votre machine:
 ```shell script
-git clone git@gricad-gitlab.univ-grenoble-alpes.fr:cs550-applications-iot/2023-2024/cs550-groupe05/bridgemonitor.git
+git clone https://github.com/TheoScripter/BridgeMonitor.git
 ```
 
 ## Compilation et Lancement de l'application bridgemonitor
